@@ -1,0 +1,31 @@
+name: flow
+
+on:
+  schedule:
+    - cron: "55 * * * *" 
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout repo content 
+        uses: actions/checkout@v2 
+
+      - name: setup python   
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.x 
+
+      - name: execute script  
+        run: |
+          python test.py
+
+      - name: commit and push 
+        run: |-
+          git diff
+          git config --global user.email "colurw@gmail.com"   
+          git config --global user.name "colurw"
+          git add -A
+          git commit -m "README.md - daily update" || exit 0
+          git push
