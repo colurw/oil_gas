@@ -3,12 +3,12 @@ from datetime import datetime
 from zoneinfo import ZoneInfo
 
 
-def get_datetime(dt: datetime | None = None) -> str:
+def get_datetime() -> str:
     """ Return a local date/time string """
     dt = datetime.now(tz=ZoneInfo("Europe/London"))
-    time_str = dt.strftime("%I:%M %p").lstrip("0")
+    time_str = dt.strftime("%H:%M").lstrip("0")
 
-    return f"{dt.strftime('%A, %b %d, %Y')} at {time_str}"
+    return f"{dt.strftime('%a, %d %b %Y')} at {time_str}"
 
 
 def update_readme_top(text: str) -> None:
