@@ -2,7 +2,9 @@ name: flow
 
 on:
   schedule:
-    - cron: "* */3 * * 1-5" 
+    - cron: "* 16 * * 1-5" 
+    - cron: "* 19 * * 1-5"
+    - cron: "* 22 * * 1-5"
 
 jobs:
   build:
